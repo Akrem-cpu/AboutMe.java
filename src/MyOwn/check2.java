@@ -4,32 +4,46 @@ import java.util.*;
 
 public class check2 {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        int num = scan.nextInt();
-        fib(num);
+
+        Scanner in = new Scanner(System.in);
+        System.out.println(reverseNoSpec(in.next()));
+
     }
 
-    public static void fib(int num) {
-        // WRITE YOUR CODE HERE
-        int[] a = new int [num];
-        a[0] = 1;
-        a[1] = 1;
-        for (int i = 0 ; i < a.length-2 ; i++){
+    public static String reverseNoSpec(String str) {
 
-            a[i+2] = a[i] + a[i+1];
+        // your code here
+        int k =0;
+        char[] a = str.toCharArray();
+        for (int i = 0; i <= a.length/2 ; i++) {
+
+            if(a[i] >= 'a' && a[i] <= 'z' || a[i] <= 'Z' && a[i] >='A') {
+            for (int j = a.length - 1 -k; j >= a.length/2  ; j--) {
+                if (a[j] >= 'a' && a[j] <= 'z' || a[j] <= 'Z' && a[j] >= 'A') {
+                        char tem = a[i];
+                        a[i] = a[j];
+                        a[j] = tem;
+                        k = a.length-j;
+                        break;
+                    }
+                }
+            }
+
         }
-        System.out.println(a[a.length-1]);
+        String revers = "";
+        for (char each: a ) {
+            revers+=each;
+        }
 
+
+
+
+
+
+
+
+        return revers;
     }
-
-
-
-
-
-
-
-
-
 }
 
 
